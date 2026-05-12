@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Shreya ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  text-align:center;
+  overflow:hidden;
+  background:#ff69b4;
+}
+
+.page{
+  display:none;
+  height:100vh;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  opacity:0;
+  transform:scale(0.95);
+  transition:0.5s;
+}
+.active{
+  display:flex;
+  opacity:1;
+  transform:scale(1);
+}
+
+.card{
+  background: rgba(255,255,255,0.3);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+
+h1,p{color:#fff}
+
+.glow{
+  font-size:36px;
+  animation:glow 1.5s infinite alternate;
+}
+@keyframes glow{
+  from{text-shadow:0 0 10px #fff;}
+  to{text-shadow:0 0 25px #ff4d88;}
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d88;
+  color:white;
+  font-size:18px;
+  margin:10px;
+  cursor:pointer;
+}
+
+button.glowShake{
+  animation:shake 0.5s;
+  box-shadow:0 0 15px #ff69b4;
+}
+@keyframes shake{
+  0%{transform:translateX(0);}
+  20%{transform:translateX(-10px);}
+  40%{transform:translateX(10px);}
+  60%{transform:translateX(-10px);}
+  80%{transform:translateX(10px);}
+  100%{transform:translateX(0);}
+}
+
+button.sparkle{
+  animation:sparkle 0.8s forwards;
+}
+@keyframes sparkle{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
+img{
+  width:40vw;
+  max-width:180px;
+  border-radius:15px;
+  margin:10px;
+}
+
+.big-img{
+  width:70vw;
+  max-width:350px;
+}
+
+.zoom{transform:scale(1.15);}
+
+.burst{position:absolute;animation:pop 1s forwards;}
+@keyframes pop{100%{transform:scale(2);opacity:0}}
+
+.lalala{position:absolute;color:#ff4d88;font-size:22px;animation:lalalaFloat 1.5s forwards;}
+@keyframes lalalaFloat{100%{opacity:0;transform:translateY(-80px)}}
+
+.line{
+  color:white;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.6s;
+  font-size:26px;
+}
+.line.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.big-text{font-size:26px;line-height:2;}
+
+.final-text{font-size:34px;}
+
+/* 💖 CINEMATIC LAST PAGE */
+.cinematic-bg{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:radial-gradient(circle at center, rgba(255,105,180,0.4), #000);
+  opacity:0;
+  animation:fadeInBg 2s forwards;
+  z-index:-1;
+}
+@keyframes fadeInBg{
+  to{opacity:1;}
+}
+
+.cinematic-text{
+  opacity:0;
+  transform:scale(0.8);
+  animation:cinemaText 2.5s forwards;
+  animation-delay:0.5s;
+}
+@keyframes cinemaText{
+  to{
+    opacity:1;
+    transform:scale(1.05);
+    text-shadow:0 0 20px #ff69b4, 0 0 40px #ff4d88;
+  }
+}
+
+.reveal-bg{
+  background: url('pic18.jpg') center/cover no-repeat;
+}
+.mermaid{
+  position:absolute;
+  font-size:24px;
+  animation:mermaidFloat 1.5s forwards;
+}
+
+@keyframes mermaidFloat{
+  0%{transform:scale(1);}
+  100%{
+    transform:translateY(-80px) scale(1.5);
+    opacity:0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="song1" src="song1.mp3"></audio>
+<audio id="song2" src="song2.mp3"></audio>
+
+<div id="showThing" class="page">
+  <div class="card">
+    <h1>Pakka dikhla du? 😏💖</h1>
+    <button onclick="showPage('finalReveal')">Ok 💖</button>
+    <button onclick="showPage('page3')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="finalReveal" class="page reveal-bg">
+  <div class="card">
+    
+    <img src="pic17.jpg" onclick="showMermaids(event)" style="width:320px; max-width:80vw; border-radius:20px; margin-bottom:15px;">
+    <h1>Hehe surprise 💖</h1>
+    
+    <button onclick="showPage('page3')">Back ⬅️</button>
+  </div>
+</div>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="card"><h1 id="typeText"></h1></div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="card">
+    <h1>Shreya, you're beautiful and you're my lalala 💖</h1>
+    <img src="pic1.jpg" onclick="burstHearts(event); showLalala(event)">
+    <img src="pic2.jpg" onclick="burstHearts(event); showLalala(event)">
+    <br><button onclick="showPage('page3')">Surprise</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+  <div class="card">
+    <h1>Choose one 💕</h1>
+    <img src="pic3.jpg" onclick="zoomAndOpen(this,'page5')">
+    <img src="pic5.jpg" onclick="zoomAndOpen(this,'page6')">
+    <img src="pic7.jpg" onclick="zoomAndOpen(this,'page7')">
+    <img src="pic9.jpg" onclick="zoomAndOpen(this,'page8')">
+    <img src="pic13.jpg" onclick="zoomAndOpen(this,'page9')">
+    <img src="pic15.jpg" onclick="zoomAndOpen(this,'page10')">
+    <img src="pic23.jpg" onclick="zoomAndOpen(this,'page11')">
+    <img src="pic25.jpg" onclick="zoomAndOpen(this,'page12')">
+    <br><button onclick="showPage('page4')">Barbie 💖</button>
+        <button onclick="showPage('showThing')">Ek cheez dikhlao 👀</button>
+  </div>
+</div>
+
+<!-- IMAGE PAGES -->
+<div id="page5" class="page"><div class="card"><img src="pic4.jpg" class="big-img"><p>my first drawing 💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page6" class="page"><div class="card"><img src="pic6.jpg" class="big-img"><p>your fav pic 💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page7" class="page"><div class="card"><img src="pic8.jpg" class="big-img"><p>you look so good 😭💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page8" class="page"><div class="card"><img src="pic10.jpg" class="big-img"><p>my fav drawing 💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page9" class="page"><div class="card"><img src="pic14.jpg" class="big-img"><p>awwww my cutu 💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page10" class="page"><div class="card"><img src="pic16.jpg" class="big-img"><p>you look so good in saree 💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page11" class="page"><div class="card"><img src="pic24.jpg" class="big-img"><p>hehe cutu💖</p><button onclick="showPage('page3')">Back</button></div></div>
+<div id="page12" class="page"><div class="card"><img src="pic26.jpg" class="big-img"><p>you the best💖</p><button onclick="showPage('page3')">Back</button></div></div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="page">
+  <div class="card">
+    <h1>My Favorite Moments 💕</h1>
+    <div id="lines">
+      <div class="line">When you laugh 💖</div>
+      <div class="line">When you smile 😊</div>
+      <div class="line">When we talk 🥺</div>
+      <div class="line">When we vc like now ❤️</div>
+      <div class="line">When you say “aap bhi na” 🥺</div>
+      <div class="line">When you say “apka shukriyawaad” 💖</div>
+      <div class="line">When you say “lalala” 😭💖</div>
+      <div class="line">When you hum songs 🎶</div>
+      <div class="line">You're my fav hehe ❤️</div>
+    </div>
+    <button onclick="showPage('final')">Next ➡️</button>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="page">
+  <div class="card">
+    <h1>Are you happy Shreya? 💖</h1>
+    <button onclick="yesClicked()">Yes 💖</button>
+    <button onclick="noClicked(event)">No 😈</button>
+  </div>
+</div>
+
+<!-- THANKS -->
+<div id="thanks" class="page">
+  <div class="card">
+    <h1 class="glow">Apka Shukriyawaad 💖</h1>
+    <button onclick="showPage('compliments')">Next ➡️</button>
+  </div>
+</div>
+
+<!-- COMPLIMENTS -->
+<div id="compliments" class="page">
+  <div class="card">
+    <p class="big-text">
+      <span onclick="event.stopPropagation(); showPage('perfectPage')" style="cursor:pointer;text-decoration:underline;">
+        You're perfect 💖
+      </span><br><br>
+      <span onclick="event.stopPropagation(); showPage('eyesPage')" style="cursor:pointer;text-decoration:underline;">
+        Your pretty eyes 👀
+      </span><br><br>
+      <span onclick="event.stopPropagation(); showPage('voicePage')" style="cursor:pointer;text-decoration:underline;">
+        Your cute voice 🎶
+      </span><br><br>
+      <span onclick="event.stopPropagation(); showPage('facePage')" style="cursor:pointer;text-decoration:underline;">
+       Your gorgeous face 😍
+      </span><br><br>
+      <span onclick="event.stopPropagation(); showPage('hairPage')" style="cursor:pointer;text-decoration:underline;">
+       Your beautiful hairs 💕
+      </span><br><br>
+      <span onclick="event.stopPropagation(); showPage('smilePage')" style="cursor:pointer;text-decoration:underline;">
+       your pretty smile 😍
+      </span>
+    </p>
+    <button onclick="showPage('poemPage')">Next ➡️</button>
+  </div>
+</div>
+
+<!-- EYES -->
+<div id="eyesPage" class="page">
+  <div class="card">
+    <img src="pic11.jpg" class="big-img">
+    <p>damnn I was right 💖</p>
+    <button onclick="showPage('pic12Page')">Next ➡️</button>
+  </div>
+</div>
+
+<!-- PIC12 -->
+<div id="pic12Page" class="page">
+  <div class="card">
+    <img src="pic12.jpg" class="big-img">
+    <p>this is for you 💖</p>
+    <button onclick="showPage('last')">Next ➡️</button>
+  </div>
+</div>
+
+<div id="facePage" class="page">
+  <div class="card">
+    <img src="pic19.jpg" class="big-img">
+    <p>awww your pretty face 😍💖</p>
+    <button onclick="showPage('compliments')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="hairPage" class="page">
+  <div class="card">
+    <img src="pic20.jpg" class="big-img">
+    <p>your hairs are sooo pretty 😭💖</p>
+    <button onclick="showPage('compliments')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="smilePage" class="page">
+  <div class="card">
+    <img src="pic21.jpg" class="big-img">
+    <p>that smile 😭💖 my fav thing</p>
+    <button onclick="showPage('compliments')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="perfectPage" class="page">
+  <div class="card">
+    <img src="pic22.jpg" class="big-img">
+    <p>you're literally perfect for me 😭💖</p>
+    <button onclick="showPage('compliments')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="voicePage" class="page">
+  <div class="card">
+    <p style="font-size:24px;">
+      i dont have your voice msg 😭<br><br>
+      but its super cute hehe 💖🎶
+    </p>
+    <button onclick="showPage('compliments')">Back ⬅️</button>
+  </div>
+</div>
+
+<div id="poemPage" class="page">
+  <div class="card">
+
+    <h1>This is for you 💖</h1>
+
+    <div style="margin-top:20px;">
+
+      <div class="line poem-line">The day we met... 💖</div>
+      <div class="line poem-line">I think of you 🥺</div>
+      <div class="line poem-line">The day we talked... 💕</div>
+      <div class="line poem-line">I fell for you ❤️</div>
+      <div class="line poem-line">The day we laugh... 😊</div>
+      <div class="line poem-line">I admire you 💖</div>
+      <div class="line poem-line">And currently I am... 🥺</div>
+      <div class="line poem-line">Thinking of you 💭❤️</div>
+      <div class="line poem-line">Your eyes, your face... 👀</div>
+      <div class="line poem-line">Your smile, your voice... 🎶</div>
+      <div class="line poem-line">Your beautiful hairs... 💕</div>
+      <div class="line poem-line">In my thoughts... 💭</div>
+      <div class="line poem-line">In my smile... 😊</div>
+      <div class="line poem-line">In my heart... forever 💖</div>
+
+    </div>
+
+    <br>
+
+    <button onclick="showPage('last')">
+      Next ➡️
+    </button>
+
+  </div>
+</div>
+
+<!-- 💖 CINEMATIC LAST PAGE -->
+<div id="last" class="page">
+  <div class="cinematic-bg"></div>
+  <div class="card">
+    <h1 class="final-text">i hope now you are happy sweetuu 💖</h1>
+    <button onclick="lastYesClicked()">Yes 💖</button>
+    <button id="lastNoBtn" onclick="lastNoClicked(event)">No 😈</button>
+    <p id="lastNoText"></p>
+  </div>
+</div>
+
+<!-- NEXT -->
+<div id="meaningPage" class="page">
+  <div class="card">
+    <h1>you know what you mean to me... 💖</h1>
+    <button onclick="showPage('earthPage')">Next ➡️</button>
+  </div>
+</div>
+
+<div id="earthPage" class="page">
+  <div class="card">
+    <img src="earth.gif" class="big-img">
+    <p>my whole world 🌍💖</p>
+    <button onclick="showPage('finalFinal')">Next ➡️</button>
+  </div>
+</div>
+
+<div id="finalFinal" class="page">
+
+  <div class="cinematic-bg"></div>
+
+  <div class="card">
+
+    <h1 class="final-text cinematic-text">
+     Be happy my lalala💖✨
+    </h1>
+
+  </div>
+
+</div>
+
+<!-- VIDEO -->
+<div id="videoPage" class="page">
+  <div class="card">
+    <video id="myVideo" width="300" controls playsinline muted>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script>
+let text="Goddess Shreya, this is for you...";
+let i=0;
+(function type(){
+  if(i<text.length){
+    document.getElementById("typeText").innerHTML+=text[i++];
+    setTimeout(type,60);
+  }
+})();
+
+document.getElementById("page1").onclick=function(){
+  document.getElementById("song1").play().catch(()=>{});
+  showPage("page2");
+}
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  if(id==="page4") startLines();
+  if(id==="poemPage") startLines();
+}
+
+function startLines(){
+  let l=document.querySelectorAll(".line");
+  l.forEach(e=>e.classList.remove("show"));
+  l.forEach((e,i)=>setTimeout(()=>e.classList.add("show"),i*400));
+}
+
+function yesClicked(){
+  document.getElementById("song1").pause();
+  document.getElementById("song2").play().catch(()=>{});
+  showPage("thanks");
+}
+
+function showMermaids(e){
+  for(let i=0;i<15;i++){
+    let m=document.createElement("div");
+    m.className="mermaid";
+    m.innerHTML="🧜‍♀️";
+    m.style.left=(e.clientX+(Math.random()*200-100))+"px";
+    m.style.top=(e.clientY+(Math.random()*200-100))+"px";
+    document.body.appendChild(m);
+    setTimeout(()=>m.remove(),1500);
+  }
+}
+
+let noCount=0;
+
+function noClicked(e){
+
+  if(noCount<5){
+
+    e.target.style.position="absolute";
+    e.target.style.left=Math.random()*80+"%";
+    e.target.style.top=Math.random()*80+"%";
+    noCount++;
+
+  }else{
+
+    document.getElementById("song1").pause();
+    document.getElementById("song1").currentTime = 0;
+
+    showPage("videoPage");
+
+    let vid=document.getElementById("myVideo");
+    vid.muted = true;
+    vid.currentTime = 0;
+
+    setTimeout(()=>{
+      vid.play().then(()=>vid.muted=false);
+    },300);
+
+  }
+}
+
+let lastNoCount=0;
+function lastNoClicked(e){
+  let btn=document.getElementById("lastNoBtn");
+  if(lastNoCount<5){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
+    lastNoCount++;
+  }else{
+    document.getElementById("lastNoText").innerText="Not gonna happen 😂";
+  }
+}
+
+function lastYesClicked(){
+  showPage("meaningPage");
+}
+
+function burstHearts(e){
+  for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="burst";
+    h.innerHTML="💖";
+    h.style.left=(e.clientX+(Math.random()*200-100))+"px";
+    h.style.top=(e.clientY+(Math.random()*200-100))+"px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),1000);
+  }
+}
+
+function showLalala(e){
+  let t=document.createElement("div");
+  t.className="lalala";
+  t.innerHTML="lalala 💖";
+  t.style.left=e.clientX+"px";
+  t.style.top=e.clientY+"px";
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),1500);
+}
+
+function zoomAndOpen(img,page){
+  img.classList.add("zoom");
+  setTimeout(()=>{
+    img.classList.remove("zoom");
+    showPage(page);
+  },300);
+}
+
+</script>
+
+</body>
+</html>
